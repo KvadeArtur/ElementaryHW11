@@ -185,7 +185,7 @@ public class Main extends Application {
 
                 if (keyEvent.getCode() == KeyCode.L) {
                     try {
-                        board.load(loadBoard());
+                        board.load(gc, loadBoard());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

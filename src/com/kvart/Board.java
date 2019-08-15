@@ -7,11 +7,11 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Board implements Serializable {
 
-    public int size;
+    private int size;
     public int number;
-    public transient GraphicsContext gc;
-    public List<Shape> shapes;
-    public List<Integer> groupShapes;
+    private transient GraphicsContext gc;
+    private List<Shape> shapes;
+    private List<Integer> groupShapes;
     public int groupSize;
 
     public Board(GraphicsContext gc) {
@@ -23,12 +23,17 @@ public class Board implements Serializable {
         this.groupSize = 0;
     }
 
-    public void load (Board board) {
+    public void load (GraphicsContext gc, Board board) {
+        this.gc = gc;
         size = board.size;
         number = board.number;
         shapes = board.shapes;
         groupShapes = board.groupShapes;
         groupSize = board.groupSize;
+
+        for (int i = 0; i < shapes.size(); i++) {
+            shapes.get(i).setGc(gc);
+        }
     }
 
     public void addBall() {

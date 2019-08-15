@@ -1,5 +1,7 @@
 package com.kvart;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public interface Shape extends Cloneable {
 
     void move(Direction direction);
@@ -8,5 +10,6 @@ public interface Shape extends Cloneable {
     void draw();
     void highlight ();
     Shape clone();
+    void setGc (GraphicsContext gc);
 
 }

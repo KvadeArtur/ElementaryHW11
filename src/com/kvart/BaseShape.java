@@ -3,7 +3,7 @@ package com.kvart;
 import javafx.scene.canvas.GraphicsContext;
 
 abstract class BaseShape implements Shape {
-    protected int ShapeSize = 50;
+    protected int shapeSize = 50;
 
     protected double x = 20.0;
     protected double y = 20.0;
@@ -13,33 +13,7 @@ abstract class BaseShape implements Shape {
     protected double SCREEN_Y;
 
 
-    public void move(Direction direction) {
-
-        SCREEN_X = gc.getCanvas().getWidth();
-        SCREEN_Y = gc.getCanvas().getHeight();
-
-        if (x + ShapeSize > SCREEN_X) {
-            x -= 1;
-        } else if (y + ShapeSize > SCREEN_Y) {
-            y -= 1;
-        } else if (x < 0) {
-            x += 1;
-        } else if (y < 0) {
-            y += 1;
-        } else {
-            if (direction == Direction.RIGHT) {
-                x += 5;
-            } else if (direction == Direction.LEFT) {
-                x -= 5;
-            } else if (direction == Direction.UP) {
-                y -= 5;
-            } else if (direction == Direction.DOWN) {
-                y += 5;
-            }
-        }
-
-
-    }
+    public abstract void move(Direction direction);
 
     public abstract void increase();
 
@@ -48,6 +22,10 @@ abstract class BaseShape implements Shape {
     public abstract void draw();
 
     public abstract void highlight ();
+
+    public void setGc (GraphicsContext gc) {
+        this.gc = gc;
+    }
 
     @Override
     public BaseShape clone() {

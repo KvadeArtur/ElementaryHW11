@@ -8,8 +8,10 @@ import java.io.Serializable;
 
 public class Triangle extends BaseShape implements Serializable {
 
-    private int x2 = 20;
-    private int x3 = 60;
+    private double x = super.x + 20;
+    private double y = super.y;
+    private int x2 = 15;
+    private int x3 = 65;
     private int y2 = 70;
     private int y3 = 70;
 
@@ -82,14 +84,14 @@ public class Triangle extends BaseShape implements Serializable {
 
     public void draw() {
         gc.setFill(Color.GREEN);
-        gc.fillPolygon(new double[]{x + 20, x2, x3},
+        gc.fillPolygon(new double[]{x, x2, x3},
                 new double[]{y, y2, y3}, 3);
     }
 
     public void highlight () {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(3);
-        gc.strokePolygon(new double[]{x + 20, x2, x3},
+        gc.strokePolygon(new double[]{x, x2, x3},
                 new double[]{y, y2, y3}, 3);
     }
 
